@@ -3,9 +3,13 @@
 {% block title %}Farm Stand{% endblock %}
 
 {% block head %}
+
+
+
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 {% endblock %}
 
 {% block navbar %}

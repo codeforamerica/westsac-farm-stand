@@ -11,6 +11,17 @@ class Interestedpeople(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
 
+class Foods(db.Model):
+    __tablename__ = 'foods'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    available = db.Column(db.Boolean)
+
+    def __repr__(self):
+        return '<Foods %r>' % (self.name)
+
+
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
