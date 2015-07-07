@@ -5,6 +5,7 @@ from flask.ext.moment import Moment
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from config import config
+# from local_settings import *
 
 bootstrap = Bootstrap()
 mail = Mail()
@@ -20,6 +21,10 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    # app.config['ACCOUNT_SID'] = ACCOUNT_SID
+    # app.config['AUTH_TOKEN'] = AUTH_TOKEN
+    # app.config['APP_SID'] = APP_SID
+    # app.config['CALLER_ID'] = CALLER_ID
 
     bootstrap.init_app(app)
     mail.init_app(app)

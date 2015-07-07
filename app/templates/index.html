@@ -30,6 +30,23 @@
 </div>
 
 <div class="container">
+  <ul class="farm-items">
+    <li class="now-title">Now Available</li>
+
+    {% for food in foods %}
+      {% if food.available == True %}
+        <li class="available">{{food.name}}</li>
+      {% endif%}
+    {% endfor %}
+
+    <li class="coming-title">Coming soon</li>
+
+    {% for food in foods %}
+      {% if food.available == False %}
+        <li class="coming-soon">{{food.name}}</li>
+      {% endif%}
+    {% endfor %}
+  </ul>
   <div class="page-header">
       <h1>personas interesadas</h1>
       {% for interested in interestedpeople %}
