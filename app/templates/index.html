@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
+
+{% block title %}Farm Stand{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <!-- any error or form related message -->
+      {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
+      </div>
+      {% endfor %}
+      <h3>Sign up for free text updates!</h3>
+      <p>Get updates on available fruits, vegetables, and pricing sent to your phone!</p>
+
+      <form method="post">
+        {{ form.name.label }} {{ form.name() }}
+        {{ form.phone.label }} {{ form.phone() }}
+        {{ form.submit() }}
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-header">
+      <h1>personas interesadas</h1>
+      {% for interested in interestedpeople %}
+        {{interested.name}} - {{interested.phone}} <br>
+      {% endfor%}
+  </div>
+
+</div>
+
+
+{% endblock %}
