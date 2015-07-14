@@ -25,6 +25,7 @@ def create_app(config_name):
     # app.config['AUTH_TOKEN'] = AUTH_TOKEN
     # app.config['APP_SID'] = APP_SID
     # app.config['CALLER_ID'] = CALLER_ID
+    
 
     bootstrap.init_app(app)
     mail.init_app(app)

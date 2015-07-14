@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request, url_for, flash
 from flask.ext.login import login_user, logout_user, login_required, current_user
+from ..email import send_email
 from . import auth
 from ..models import User
 from .forms import LoginForm, RegistrationForm
@@ -65,6 +66,7 @@ def unconfirmed():
 @login_required
 def resend_confirmation():
     token = current_user.generate_confirmation_token()
-    send_email('auth/email/confirm', 'Confirm Your Account', user, token=token)
+    print current_user.email
+    send_email(current_user.email, 'Confirm Your Account', 'auth/email/confirm', user=current_user, token=token)
     flash('A new confirmation email has been sent to you by email.')
     return redirect(url_for('main.index'))
