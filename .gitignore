@@ -2,3 +2,4 @@
 venv
 local_settings.py
 .env
+.DS_Store
