@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request, url_for, flash
 from flask.ext.login import login_user, logout_user, login_required, current_user
+from app import db
 from ..email import send_email
 from . import auth
 from ..models import User
