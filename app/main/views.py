@@ -110,6 +110,7 @@ def manage_product():
         product = Product(name=form.name.data, available=form.available.data,
                     farmer=current_user._get_current_object())
         db.session.add(product)
-        return redirect(url_for('.manage-product'))
+        return redirect(url_for('.manage_product'))
+    form.name.data = ''
     products = Product.query.order_by(Product.name).all()
     return render_template('manage_product.html', form=form, products=products)
