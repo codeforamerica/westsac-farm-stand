@@ -11,16 +11,13 @@
       {{ wtf.quick_form(form) }}
     {% endif %}
   </div>
-  <ul class="posts">
+  <ul class="products">
       {% for product in products %}
         <li class="product">
-          <div class="profile-thumbnail">
-            <a href="{{ url_for('.user', username=product.farmer.username) }}">
-            </a>
-          </div>
           <div class="product-farmer">
             <a href="{{ url_for('.user', username=product.farmer.username) }}"> {{ product.farmer.username }}
             </a>
+            {{ product.name }}
           </div>
         </li>
       {% endfor %}
