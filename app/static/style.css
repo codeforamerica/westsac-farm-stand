@@ -1,48 +1,38 @@
-.farm-items {
-  position: relative;
-  margin: 0 auto;
-  width: 540px;
-
-}
-
-.farm-info {
-  position: relative;
-  margin: 0 auto;
-  clear: both;
-  width: 530px;
-  padding: 10px 0px 10px 45px;
-}
-
-.farm-items li{
-  list-style-type: none;
-  postion: relative;
-  float: left;
-  width: 150px;
-  height: 150px;
+/*header styles*/
+.market-header {
   background-color: tomato;
-  margin: 5px;
+  height: 200px;
 }
 
-.farm-items li.now-title {
-  background-color: SeaGreen;
-  color: white;
-  padding: 10px;
+.market-header .farmers li{
+  list-style-type: none;
+  display: inline;
+  height: 125px;
+  margin: 10px 16px;
+  background-color: green;
+}
+/*end of header styles*/
+
+
+/*content styles*/
+.crop-list {
+  width: 500px;
+  margin: 0 auto;
+  background-color: pink;
 }
 
-.farm-items li.available {
-  background-color: DarkTurquoise;
-  color: white;
-  padding: 10px;
+.fast-sign-up {
+  background-color: lightgray;
+  height: 200px;
 }
 
-.farm-items li.coming-title {
-  background-color: LightSteelBlue;
-  color: white;
-  padding: 10px;
+.fast-sign-up .sign-up-content {
+  width: 500px;
+  margin: 0 auto;
 }
+/*end of content styles*/
 
-.farm-items li.coming-soon {
-  background-color: honeydew;
-  color: RGBA(176, 196, 222, 1);
-  padding: 10px;
-}
+
+/*footer styles*/
+
+/*end of footer styles*/
