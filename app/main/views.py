@@ -58,6 +58,7 @@ def user(username):
         abort(404)
     return render_template('user.html', user=user)
 
+
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -101,16 +102,47 @@ def edit_profile_admin(id):
     form.about_me.data = user.about_me
     return render_template('edit_profile.html', form=form, user=user)
 
-@main.route('/manage-product', methods=['GET', 'POST'])
+@main.route('/manage-product/<int:id>', methods=['GET', 'POST'])
 @login_required
-def manage_product():
+def manage_product(id):
     form = ProductForm()
     if current_user.can(Permission.ADD_PRODUCT) and \
             form.validate_on_submit():
         product = Product(name=form.name.data, available=form.available.data,
                     farmer=current_user._get_current_object())
         db.session.add(product)
-        return redirect(url_for('.manage_product'))
+        return redirect(url_for('.manage_product', id=id))
     form.name.data = ''
-    products = Product.query.order_by(Product.name).all()
+    products = Product.query.filter_by(farmer_id = id).all()
     return render_template('manage_product.html', form=form, products=products)
+
+
+@main.route('/manage_product/available/<int:id>')
+@login_required
+def update_available(id):
+    print "clickaste para off"
+    product = Product.query.get_or_404(id)
+    product.available = True
+    db.session.add(product)
+    db.session.commit()
+    return redirect(url_for('.manage_product', id=product.farmer_id))
+
+
+@main.route('/manage_product/unavailable/<int:id>')
+@login_required
+def update_unavailable(id):
+    print "clickaste para on"
+    product = Product.query.get_or_404(id)
+    product.available = False
+    db.session.add(product)
+    db.session.commit()
+    return redirect(url_for('.manage_product', id=product.farmer_id))
+
+@main.route('/manage_product/delete/<int:id>')
+@login_required
+def delete_product(id):
+    print "clickaste para borrar"
+    product = Product.query.get_or_404(id)
+    db.session.delete(product)
+    db.session.commit()
+    return redirect(url_for('.manage_product', id=product.farmer_id))

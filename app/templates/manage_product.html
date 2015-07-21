@@ -7,20 +7,26 @@
 
 <div class="container">
   <div class="page-header">
-    {% if current_user.can(Permission.ADD_PRODUCT) %}
+    {% if current_user %}
       {{ wtf.quick_form(form) }}
+
+      <ul class="products" style="width: 300px;">
+          {% for product in products %}
+            <li>
+              {{ product.name }}
+
+                {% if product.available %}
+                  <a href="{{ url_for('.update_unavailable', id=product.id) }}">available</a>
+                {% else %}
+                  <a href="{{ url_for('.update_available', id=product.id) }}">unavailable</a>
+                {% endif %}
+
+                  <a href="{{ url_for('.delete_product', id=product.id) }}" class="pull-right" style="color: tomato;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            </li><br>
+          {% endfor %}
+      </ul>
+
     {% endif %}
   </div>
-  <ul class="products">
-      {% for product in products %}
-        <li class="product">
-          <div class="product-farmer">
-            <a href="{{ url_for('.user', username=product.farmer.username) }}"> {{ product.farmer.username }}
-            </a>
-            {{ product.name }}
-          </div>
-        </li>
-      {% endfor %}
-  </ul>
 </div>
 {% endblock %}
