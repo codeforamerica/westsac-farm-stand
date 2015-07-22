@@ -25,17 +25,17 @@
     <ul class="farm-items">
       <li class="now-title">Now Available</li>
 
-      {% for food in foods %}
-        {% if food.available == True %}
-          <li class="available">{{food.name}}</li>
+      {% for product in products %}
+        {% if product.available == True %}
+          <li class="available">{{product.name}}</li>
         {% endif%}
       {% endfor %}
 
       <li class="coming-title">Coming soon</li>
 
-      {% for food in foods %}
-        {% if food.available == False %}
-          <li class="coming-soon">{{food.name}}</li>
+      {% for product in products %}
+        {% if product.available == False %}
+          <li class="coming-soon">{{product.name}}</li>
         {% endif%}
       {% endfor %}
     </ul>

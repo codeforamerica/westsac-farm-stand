@@ -21,7 +21,7 @@ def index():
     # capability = TwilioCapability(app.config['ACCOUNT_SID'], app.config['AUTH_TOKEN'])
     # capability.allow_client_outgoing(app.config['APP_SID'])
     # token = capability.generate()
-    foods = Foods.query.all()
+    products = Product.query.all()
     if request.method == 'POST':
         name = request.values.get('name', None)
         phone = request.values.get('phone', None)
@@ -30,12 +30,12 @@ def index():
         db.session.commit()
         return redirect(url_for('main.index'))
     interestedpeople = Interestedpeople.query.all()
-    return render_template('index.html', form=form, foods=foods, interestedpeople=interestedpeople)
+    return render_template('index.html', form=form, products=products, interestedpeople=interestedpeople)
 
 @main.route('/foodsms', methods=['POST'])
 def foodsms():
-    foods = Foods.query.all()
-    foodstring = ', '.join([str(x.name) for x in foods])
+    products = Product.query.all()
+    foodstring = ', '.join([str(x.name) for x in products])
     if request.method == 'POST':
         keyword = request.values.get('Body', None)
         if keyword == 'FOOD':
@@ -102,22 +102,15 @@ def edit_profile_admin(id):
     form.about_me.data = user.about_me
     return render_template('edit_profile.html', form=form, user=user)
 
-@main.route('/manage-product/<int:id>', methods=['GET', 'POST'])
+@main.route('/crop-list/<int:id>', methods=['GET', 'POST'])
 @login_required
-def manage_product(id):
-    form = ProductForm()
-    if current_user.can(Permission.ADD_PRODUCT) and \
-            form.validate_on_submit():
-        product = Product(name=form.name.data, available=form.available.data,
-                    farmer=current_user._get_current_object())
-        db.session.add(product)
-        return redirect(url_for('.manage_product', id=id))
-    form.name.data = ''
+def crop_list(id):
     products = Product.query.filter_by(farmer_id = id).all()
-    return render_template('manage_product.html', form=form, products=products)
+    return render_template('crop_list.html', products=products)
 
 
-@main.route('/manage_product/available/<int:id>')
+
+@main.route('/crop-list/available/<int:id>')
 @login_required
 def update_available(id):
     print "clickaste para off"
@@ -125,10 +118,10 @@ def update_available(id):
     product.available = True
     db.session.add(product)
     db.session.commit()
-    return redirect(url_for('.manage_product', id=product.farmer_id))
+    return redirect(url_for('.crop_list', id=product.farmer_id))
 
 
-@main.route('/manage_product/unavailable/<int:id>')
+@main.route('/crop-list/unavailable/<int:id>')
 @login_required
 def update_unavailable(id):
     print "clickaste para on"
@@ -136,13 +129,26 @@ def update_unavailable(id):
     product.available = False
     db.session.add(product)
     db.session.commit()
-    return redirect(url_for('.manage_product', id=product.farmer_id))
+    return redirect(url_for('.crop_list', id=product.farmer_id))
 
-@main.route('/manage_product/delete/<int:id>')
+@main.route('/crop-list/delete/<int:id>')
 @login_required
 def delete_product(id):
     print "clickaste para borrar"
     product = Product.query.get_or_404(id)
     db.session.delete(product)
     db.session.commit()
-    return redirect(url_for('.manage_product', id=product.farmer_id))
+    return redirect(url_for('.crop_list', id=product.farmer_id))
+
+@main.route('/add-product/<int:id>', methods=['GET', 'POST'])
+@login_required
+def add_product(id):
+    form = ProductForm()
+    if current_user.can(Permission.ADD_PRODUCT) and \
+            form.validate_on_submit():
+        product = Product(name=form.name.data, available=form.available.data,
+                    farmer=current_user._get_current_object())
+        db.session.add(product)
+        form.name.data = ''
+        return redirect(url_for('.crop_list', id=current_user.id))
+    return render_template('add_product.html', form=form)
