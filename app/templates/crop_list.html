@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Farm Stand - Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="crop-list">
+  <div class="container">
+      {% if current_user %}
+        <div class="header">
+          <h2>Crop List <a href="{{ url_for('.add_product', id=current_user.id) }}"><span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span></a></h2>
+        </div><hr>
+        <ul class="products" style="width: 300px;">
+          <h4>Available Now</h4><hr>
+          {% for product in products %}
+            {% if product.available == True %}
+              <li class="available">
+                {{product.name}}
+                {% if product.available %}
+                  <a href="{{ url_for('.update_unavailable', id=product.id) }}">available</a>
+                {% else %}
+                  <a href="{{ url_for('.update_available', id=product.id) }}">unavailable</a>
+                {% endif %}
+                <a href="{{ url_for('.delete_product', id=product.id) }}" class="pull-right" style="color: tomato;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+              </li>
+            {% endif%}
+          {% endfor %}
+
+          <h4>Coming Soon</h4><hr>
+          {% for product in products %}
+            {% if product.available == False %}
+              <li class="available">
+                {{product.name}}
+                {% if product.available %}
+                  <a href="{{ url_for('.update_unavailable', id=product.id) }}">available</a>
+                {% else %}
+                  <a href="{{ url_for('.update_available', id=product.id) }}">unavailable</a>
+                {% endif %}
+                <a href="{{ url_for('.delete_product', id=product.id) }}" class="pull-right" style="color: tomato;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+              </li>
+            {% endif%}
+          {% endfor %}
+
+        </ul>
+      {% endif %}
+  </div>
+</div>
+
+{% endblock %}
