@@ -50,4 +50,7 @@ class EditProfileAdminForm(Form):
 class ProductForm(Form):
     name = StringField('Product name', validators=[Length(0, 64)])
     available = BooleanField('Available')
+    price = StringField('Price')
+    starts = StringField('From')
+    ends = StringField('To')
     submit = SubmitField('Submit')

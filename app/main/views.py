@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, redirect, url_for, flash, req
 from flask.ext.login import login_required, current_user
 from . import main
 from .forms import NamePhoneForm, EditProfileForm, EditProfileAdminForm, ProductForm
-from ..models import Interestedpeople, Role, Foods, User, Permission, Product
+from ..models import Interestedpeople, Role, User, Permission, Product
 from app import db
 from ..decorators import admin_required, permission_required
 import twilio.twiml
@@ -146,9 +146,23 @@ def add_product(id):
     form = ProductForm()
     if current_user.can(Permission.ADD_PRODUCT) and \
             form.validate_on_submit():
-        product = Product(name=form.name.data, available=form.available.data,
+        product = Product(name=form.name.data,
+                    available=form.available.data,
+                    price=form.price.data,
+                    starts=form.starts.data,
+                    ends=form.ends.data,
                     farmer=current_user._get_current_object())
         db.session.add(product)
         form.name.data = ''
+        form.price.data = ''
+        form.starts.data = ''
+        form.ends.data = ''
         return redirect(url_for('.crop_list', id=current_user.id))
     return render_template('add_product.html', form=form)
+
+@main.route('/list-users')
+@login_required
+@admin_required
+def list_users():
+    users = User.query.all()
+    return render_template('list_users.html', users=users)

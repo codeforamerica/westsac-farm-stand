@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Farm Stand{% endblock %}
+
+{% block content %}
+
+
+<div class="list-users">
+  <div class="container">
+    <div class="row">
+      <h3>List of users</h3>
+      <table class="table table-condensed">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>role</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.role.name}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

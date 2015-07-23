@@ -1,3 +1,40 @@
+/*base styles*/
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  margin-top: 0px;}
+
+h2 {
+  font-size: 30px;
+  font-weight:bold;}
+
+h3 {
+  font-size: 21px;
+  font-weight: bold;}
+
+h4 {
+  font-size: 14px;
+  margin-top: 4px;
+  line-height: 1.5em;}
+
+table {
+  margin-bottom: 40px;
+  width: 100%;}
+
+tr {
+  border-bottom: 1px solid #eee;}
+
+td {
+  padding: 20px 0px;}
+
+/*end of base styles*/
+
 /*header styles*/
 .navbar {
   background-color: darkgray;
@@ -23,8 +60,137 @@
 
 /*end of header styles*/
 
+/*login styles*/
+.login .box, .register .box, .edit-profile .box, .add-product .box {
+  margin-top: 20px;
+}
+.login-box, .new-register, .register-box, .edit-profile-box, .add-product-box{
+  background-color: white;
+  width: 33%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.login .btn, .edit-profile .btn, .register .btn, .add-product .btn {
+  background-color: green;
+  color: white;
+  font-size: 1.4em;
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+}
+
+.edit-profile .btn, .add-product .btn {
+  background-color: #0000ff;
+}
+
+/*end login styles*/
 
 /*content styles*/
+
+.disclaimer {
+  font-size: 13px;
+}
+
+.sign-up {
+  background-color: #f5F5F5;
+  padding: 30px 0px 45px;
+  margin-top: 50px;
+}
+
+.sign-up h3 {
+  text-align: left;
+  margin-top: 0px;
+}
+
+.sign-up p {
+  font-size: 15px;
+  opacity: .7;
+}
+
+.sign-up .form-control {
+  height: 47px;
+  font-size: 18px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: blue;
+    border-color: blue;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    opacity: .5;
+    background-color: blue;
+    border-color: blue;
+}
+
+.header-info{
+    padding-top: 35px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    background-color: #f5f5f5;
+}
+
+.subscribe {
+    font-size: 18px;
+    padding: 10px 30px;
+}
+
+.participating-farmers {
+    padding-left: 40px;
+}
+
+.list-users ul{
+  padding: 0;
+}
+.list-users li {
+  list-style-type: none;
+}
+
+.crop-list ul{
+  padding: 0px;
+}
+
+.crop-list li{
+  list-style-type: none;
+  height: 55px;
+  border-bottom: 1px solid #f6f6f6;
+  margin-bottom: 15px;
+}
+
+.crop-list .glyphicon-plus{
+  background-color: limegreen;
+  color: white;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 7px;
+  padding-left: 2px;
+  border-radius: 50px;
+  font-size: 0.8em;
+}
+.crop-list  .available-now .season {
+  color: MediumSeaGreen;
+  opacity: 0.6;
+}
+
+.crop-list .price {
+  color: darkgray;
+}
+
+.crop-list .available-btn {
+  padding: 0px 10px;
+}
+
+.price {
+  text-align: right;
+}
+.coming-soon .price, .coming-soon .title, .coming-soon .season{
+  opacity: .5;
+}
 
 /*end of content styles*/
 
@@ -35,8 +201,11 @@
 
 @media only screen
 and (min-device-width : 320px)
-and (max-device-width : 568px)
-and (orientation : portrait) {
+and (max-device-width : 568px) {
+  .login-box, .new-register, .register-box, .edit-profile-box, .add-product-box {
+    width: 100%;
+  }
+
   .login #submit {
     background-color: green;
     color: white;
@@ -76,28 +245,10 @@ and (orientation : portrait) {
 
   .register input, .add-product input {
     height: 50px;
+    background-color: #F5F9FD;
   }
 
-  .crop-list ul{
-    padding: 0px;
-  }
-
-  .crop-list li{
-    list-style-type: none;
-    height: 35px;
-    border-bottom: 1px solid #f6f6f6;
-    margin-bottom: 15px;
-  }
-
-  .crop-list .glyphicon-plus{
-    background-color: limegreen;
-    color: white;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    padding-top: 7px;
-    padding-left: 2px;
-    border-radius: 50px;
-    font-size: 0.8em;
+  .list-users .row {
+    padding: 5px;
   }
 }
