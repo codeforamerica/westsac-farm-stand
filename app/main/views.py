@@ -140,6 +140,7 @@ def delete_product(id):
     db.session.commit()
     return redirect(url_for('.crop_list', id=product.farmer_id))
 
+
 @main.route('/add-product/<int:id>', methods=['GET', 'POST'])
 @login_required
 def add_product(id):
@@ -159,6 +160,28 @@ def add_product(id):
         form.ends.data = ''
         return redirect(url_for('.crop_list', id=current_user.id))
     return render_template('add_product.html', form=form)
+
+@main.route('/crop-list/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_product(id):
+    print "clickaste para editar"
+    product = Product.query.get_or_404(id)
+    form = ProductForm()
+    if form.validate_on_submit():
+        product.name = form.name.data
+        product.available = form.available.data
+        product.price = form.price.data
+        product.starts = form.starts.data
+        product.ends = form.ends.data
+        db.session.add(product)
+        flash('The product has been updated.')
+        return redirect(url_for('.crop_list', id=current_user.id))
+    form.name.data = product.name
+    form.available.data = product.available
+    form.price.data = product.price
+    form.starts.data = product.starts
+    form.ends.data = product.ends
+    return render_template('edit_product.html', form=form, product=product)
 
 @main.route('/list-users')
 @login_required
