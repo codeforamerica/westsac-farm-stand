@@ -14,14 +14,24 @@
 
 {% block content %}
 
-<div class="add-product">
+<div class="add-product edit-product">
   <div class="container">
     <div class="box">
       <div class="add-product-box">
         {% if current_user %}
-          <h3>add product</h3>
-          {{ wtf.quick_form(form) }}
-          <a href="{{ url_for('.delete_product', id=product.id) }}" class="pull-right" style="color: tomato;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+          <h3>edit product</h3>
+          <form class="form" method="post" role="form">
+            {{ form.hidden_tag() }}
+
+            {{ wtf.form_field(form.name, placeholder=product.name) }}
+            {{ wtf.form_field(form.available, placeholde=product.available) }}
+            {{ wtf.form_field(form.price, placeholder=product.price )}}
+            {{ wtf.form_field(form.starts, placeholder=product.starts )}}
+            {{ wtf.form_field(form.ends, placeholder=product.ends ) }}
+            {{ wtf.form_field(form.submit)}}
+
+          </form>
+          <div class="delete-box"><a href="{{ url_for('.delete_product', id=product.id) }}" class="delete"> delete </a></div>
         {% endif %}
       </div>
     </div>

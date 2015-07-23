@@ -20,7 +20,18 @@
       <div class="add-product-box">
         {% if current_user %}
           <h3>add product</h3>
-          {{ wtf.quick_form(form) }}
+          <form class="form" method="post" role="form">
+            {{ form.hidden_tag() }}
+
+            {{ wtf.form_field(form.name, placeholder="name") }}
+            {{ wtf.form_field(form.available) }}
+            {{ wtf.form_field(form.price, placeholder="price" )}}
+            {{ wtf.form_field(form.starts, placeholder="from" )}}
+            {{ wtf.form_field(form.ends, placeholder="ends" ) }}
+            {{ wtf.form_field(form.submit)}}
+
+          </form>
+
         {% endif %}
       </div>
     </div>
