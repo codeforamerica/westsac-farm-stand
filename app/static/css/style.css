@@ -192,6 +192,16 @@ td {
   opacity: .5;
 }
 
+.add-product-box div.delete-box {
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.add-product-box div.delete-box a {
+  color: tomato;
+}
+
 /*end of content styles*/
 
 
@@ -243,6 +253,10 @@ and (max-device-width : 568px) {
     border-radius: 4px;
   }
 
+  .edit-product #submit {
+    background-color: #0000ff;
+  }
+
   .register input, .add-product input {
     height: 50px;
     background-color: #F5F9FD;
@@ -251,4 +265,9 @@ and (max-device-width : 568px) {
   .list-users .row {
     padding: 5px;
   }
+
+  .login .box, .register .box, .edit-profile .box, .add-product .box {
+    margin-top: -10px;
+  }
+
 }
