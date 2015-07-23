@@ -6,38 +6,66 @@
 {% block title %}Farm Stand{% endblock %}
 
 {% block content %}
-<div class="market-header">
+
+<!-- any error or form related message -->
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
+
+<div class="header-info">
   <div class="container">
     <div class="row">
-      <ul class="farmers">
-        <li class="col-md-2">Sara</li>
-        <li class="col-md-2">Sara</li>
-        <li class="col-md-2">Sara</li>
-        <li class="col-md-2">Sara</li>
-        <li class="col-md-2">Sara</li>
-      </ul>
+      <div class="col-md-9">
+        <h1>West Sacramento Urban Farm</h1>
+        <h4>
+          317 5th Street, West Sacramento, CA 95605<br />
+          Tuesdays and Fridays, 3pm &ndash; 7pm
+        </h4>
+      </div>
+
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary subscribe">Subscribe</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="crop-list">
-    <ul class="farm-items">
-      <li class="now-title">Now Available</li>
+<div class="container produce-list">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Available now</h2>
 
-      {% for product in products %}
-        {% if product.available == True %}
-          <li class="available">{{product.name}}</li>
-        {% endif%}
-      {% endfor %}
+      <table>
+        <tbody>
+          {% for product in products %}
+            {% if product.available == True %}
+              <tr>
+                <td>{{product.name}}</td>
+                <td class="price">${{product.price}}</td>
+              </tr>
+            {% endif%}
+          {% endfor %}
+        </tbody>
+      </table>
 
-      <li class="coming-title">Coming soon</li>
+      <h2>Coming soon</h2>
 
-      {% for product in products %}
-        {% if product.available == False %}
-          <li class="coming-soon">{{product.name}}</li>
-        {% endif%}
-      {% endfor %}
+      <table class="coming-soon">
+        <tbody>
+          {% for product in products %}
+            {% if product.available == False %}
+              <tr>
+                <td>{{product.name}}</td>
+                <td class="price">${{product.price}}</td>
+              </tr>
+            {% endif%}
+          {% endfor %}
+        </tbody>
+      </table>
+
     </ul>
   </div>
   <!-- <div>
@@ -46,28 +74,38 @@
         {{interested.name}} - {{interested.phone}} <br>
       {% endfor%}
   </div> -->
+  <div class="col-md-4 participating-farmers">
+    <h3>Participating farmers</h3>
+      <ul>
+        <li>Sara Bernal</li>
+        <li>Aimee Sisson</li>
+        <li>Fred Blume</li>
+        <li>Joe Kramm</li>
+        <li>Monisha Jackson</li>
+      </ul>
+  </div>
 
+  </div>
 </div>
 
-<div class="fast-sign-up">
+
+
+<div class="sign-up">
   <div class="container">
-    <div class="sign-up-content">
-      <!-- any error or form related message -->
-      {% for message in get_flashed_messages() %}
-      <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          {{ message }}
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Sign up for free text updates!</h3>
+        <p>Get updates on available fruits, vegetables, and pricing sent to your phone.</p>
+        <form method="post" class="form-inline">
+          <div class="form-group">
+            {{ form.name(class_='form-control', placeholder='First Name') }}
+          </div>
+          <div class="form-group">
+            {{ form.phone(class_='form-control', placeholder='Phone Number') }}
+          </div>
+            {{ form.submit(class_='btn btn-primary subscribe', value='Subscribe') }}
+        </form>
       </div>
-      {% endfor %}
-      <h3>Sign up for free text updates!</h3>
-      <p>Get updates on available fruits, vegetables, and pricing sent to your phone!</p>
-
-      <form method="post">
-        {{ form.name.label }} {{ form.name() }}
-        {{ form.phone.label }} {{ form.phone() }}
-        {{ form.submit() }}
-      </form>
-
     </div>
   </div>
 </div>

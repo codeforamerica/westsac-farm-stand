@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/venv python
 import os
 from app import create_app, db
 from app.models import User, Role, Interestedpeople, Permission, Product
@@ -22,6 +22,7 @@ def test():
     import unittest
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
+
 
 
 if __name__ == '__main__':
