@@ -23,6 +23,7 @@
           <td>{{user.id}}</td>
           <td>{{user.name}}</td>
           <td>{{user.role.name}}</td>
+          <td><a href="{{ url_for('.edit_profile_admin', id=user.id) }}">edit</a></td>
         </tr>
         {% endfor %}
       </table>
