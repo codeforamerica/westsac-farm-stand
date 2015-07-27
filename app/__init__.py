@@ -25,7 +25,10 @@ def create_app(config_name):
     # app.config['AUTH_TOKEN'] = AUTH_TOKEN
     # app.config['APP_SID'] = APP_SID
     # app.config['CALLER_ID'] = CALLER_ID
-    
+
+    if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
+        from flask.ext.sslify import SSLify
+        sslify = SSLify(app)
 
     bootstrap.init_app(app)
     mail.init_app(app)
