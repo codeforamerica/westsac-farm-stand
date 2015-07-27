@@ -77,11 +77,9 @@
   <div class="col-md-4 participating-farmers">
     <h3>Participating farmers</h3>
       <ul>
-        <li>Sara Bernal</li>
-        <li>Aimee Sisson</li>
-        <li>Fred Blume</li>
-        <li>Joe Kramm</li>
-        <li>Monisha Jackson</li>
+        {% for farmer in farmers %}
+          <li>{{ farmer.name }}</li>
+        {% endfor %}
       </ul>
   </div>
 
