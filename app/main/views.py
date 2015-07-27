@@ -18,10 +18,11 @@ callers = {
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = NamePhoneForm()
+    farmers = User.query.filter_by(role_id = 1).all()
     # capability = TwilioCapability(app.config['ACCOUNT_SID'], app.config['AUTH_TOKEN'])
     # capability.allow_client_outgoing(app.config['APP_SID'])
     # token = capability.generate()
-    products = Product.query.all()
+    products = Product.query.join(User).filter(User.role_id==1).all()
     if request.method == 'POST':
         name = request.values.get('name', None)
         phone = request.values.get('phone', None)
@@ -30,7 +31,7 @@ def index():
         db.session.commit()
         return redirect(url_for('main.index'))
     interestedpeople = Interestedpeople.query.all()
-    return render_template('index.html', form=form, products=products, interestedpeople=interestedpeople)
+    return render_template('index.html', form=form, products=products, interestedpeople=interestedpeople, farmers=farmers)
 
 @main.route('/foodsms', methods=['POST'])
 def foodsms():
