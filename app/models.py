@@ -25,7 +25,7 @@ class Role(db.Model):
         roles = {
             'User': (Permission.FOLLOW |
                      Permission.COMMENT, True),
-            'Moderator': (Permission.FOLLOW |
+            'Farmer': (Permission.FOLLOW |
                           Permission.COMMENT |
                           Permission.ADD_PRODUCT |
                           Permission.ADD_MARKET, False),
