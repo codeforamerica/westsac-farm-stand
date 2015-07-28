@@ -1,5 +1,4 @@
 import os
-import
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -43,7 +42,8 @@ class ProductionConfig(Config):
         Config.init_app(app)
 
         # email errors to the Administrator
-        from loggin.handlers import SMTPHandler
+        import logging
+        from logging.handlers import SMTPHandler
         credentials = None
         secure = None
         if getattr(cls, 'MAIL_USERNAME', None) is not None:
