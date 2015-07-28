@@ -57,7 +57,7 @@ class ProductionConfig(Config):
             subject=cls.FARMSTAND_MAIL_SUBJECT_PREFIX + ' Application Error',
             credentials=credentials,
             secure=secure)
-        mail_handler.setLevel(loggin.ERROR)
+        mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 
 class HerokuConfig(ProductionConfig):
