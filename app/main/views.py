@@ -32,7 +32,7 @@ def foodsms():
     foodstring = ', '.join([str(x.name) for x in products])
     if request.method == 'POST':
         keyword = request.values.get('Body', None).lower()
-        if keyword == 'FOOD':
+        if keyword == 'food':
             message = foodstring
         else:
             message = "This is West Sacramento Farm Stand, if you want to know which food is available text 'FOOD'."
