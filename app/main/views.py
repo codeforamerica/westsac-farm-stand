@@ -8,13 +8,6 @@ from ..decorators import admin_required, permission_required
 import twilio.twiml
 
 
-# Try adding your own number to this list!
-callers = {
-    "+14153099911": "Imanol",
-    "+14158675310": "Boots",
-    "+14158675311": "Virgil",
-}
-
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = NamePhoneForm()
@@ -38,7 +31,7 @@ def foodsms():
     products = Product.query.all()
     foodstring = ', '.join([str(x.name) for x in products])
     if request.method == 'POST':
-        keyword = request.values.get('Body', None)
+        keyword = request.values.get('Body', None).lower()
         if keyword == 'FOOD':
             message = foodstring
         else:
