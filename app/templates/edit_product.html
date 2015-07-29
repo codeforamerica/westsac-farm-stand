@@ -25,7 +25,7 @@
 
             {{ wtf.form_field(form.name, placeholder=product.name) }}
             {{ wtf.form_field(form.available, placeholde=product.available) }}
-            {{ wtf.form_field(form.price, placeholder=product.price )}}
+            {{ wtf.form_field(form.price, placeholder="$", product.price )}}
             {{ wtf.form_field(form.starts, placeholder=product.starts )}}
             {{ wtf.form_field(form.ends, placeholder=product.ends ) }}
             {{ wtf.form_field(form.submit)}}
