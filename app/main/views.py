@@ -64,7 +64,7 @@ def edit_profile():
         db.session.add(current_user)
         db.session.commit()
         flash('Your profile has been updated.')
-        return redirect(url_for('.user', user_id=current_user.user_id))
+        return redirect(url_for('.user', id=current_user.id))
     form.name.data = current_user.name
     form.location.data = current_user.location
     form.about_me.data = current_user.about_me
@@ -87,7 +87,7 @@ def edit_profile_admin(id):
         db.session.add(user)
         db.session.commit()
         flash('The profile has been updated.')
-        return redirect(url_for('.list_users', id=user.user_id))
+        return redirect(url_for('.list_users', id=current_user.id))
     form.email.data = user.email
     form.confirmed.data = user.confirmed
     form.role.data = user.role_id
