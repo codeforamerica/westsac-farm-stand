@@ -69,6 +69,7 @@ def edit_profile():
         current_user.location = form.location.data
         current_user.about_me = form.about_me.data
         db.session.add(current_user)
+        db.session.commit()
         flash('Your profile has been updated.')
         return redirect(url_for('.user', username=current_user.username))
     form.name.data = current_user.name
@@ -156,6 +157,7 @@ def add_product(id):
                     ends=form.ends.data,
                     farmer=current_user._get_current_object())
         db.session.add(product)
+        db.session.commit()
         form.name.data = ''
         form.price.data = ''
         form.starts.data = ''
@@ -176,6 +178,7 @@ def edit_product(id):
         product.starts = form.starts.data
         product.ends = form.ends.data
         db.session.add(product)
+        db.session.commit()
         flash('The product has been updated.')
         return redirect(url_for('.crop_list', id=current_user.id))
     form.name.data = product.name
