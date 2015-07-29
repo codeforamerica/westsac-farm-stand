@@ -29,12 +29,15 @@
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 {% if current_user.is_authenticated() %}
                 <li><a href="{{ url_for('main.user', id=current_user.id)}}">Profile</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated() and current_user.role_id == 1 %}
                 <li><a href="{{ url_for('main.crop_list', id=current_user.id)}}">Crop List</a></li>
-                {% if current_user.is_authenticated() and current_user.id == 3 %}
+                {% endif %}
+                {% if current_user.is_authenticated() and current_user.role_id == 3 %}
+                <li><a href="{{ url_for('main.crop_list', id=current_user.id)}}">Crop List</a></li>
                 <li><a href="{{ url_for('main.list_users', id=current_user.id)}}">Admin</a></li>
                 {% endif %}
 
-                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated() %}
