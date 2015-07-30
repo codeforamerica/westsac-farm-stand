@@ -4,7 +4,7 @@ from app import db
 from ..email import send_email
 from . import auth
 from ..models import User
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -38,6 +38,17 @@ def register():
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('main.index'))
     return render_template('auth/register.html', form=form)
+
+@auth.route('/changepassword', methods=['GET', 'POST'])
+def changepassword():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        user = User(password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('You just changed your password, I hope is safe.')
+        return redirect(url_for('main.edit_profile.html'))
+    return render_template('auth/change_password.html', form=form)
 
 @auth.route('/confirm/<token>')
 @login_required
