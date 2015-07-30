@@ -29,7 +29,7 @@ def index():
 @main.route('/foodsms', methods=['POST'])
 def foodsms():
     products = Product.query.all()
-    foodstring = ', '.join([str(x.name) for x in products])
+    foodstring = ', '.join([x.name for x in products])
     if request.method == 'POST':
         keyword = request.values.get('Body', None).lower()
         if keyword == 'food':
