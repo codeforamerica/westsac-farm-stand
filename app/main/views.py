@@ -36,10 +36,6 @@ def foodsms():
             message = foodstring
         else:
             message = "This is West Sacramento Farm Stand, if you want to know which food is available text 'FOOD'."
-        # reg = Friend(message=message,phone=phone)
-        # db.session.add(reg)
-        # db.session.commit()
-
 
     resp = twilio.twiml.Response()
     resp.message(message)
