@@ -43,11 +43,11 @@ def register():
 def changepassword():
     form = ChangePasswordForm()
     if form.validate_on_submit():
-        user = User(password=form.password.data)
-        db.session.add(user)
+        current_user.password=form.password.data
+        db.session.add(current_user)
         db.session.commit()
         flash('You just changed your password, I hope is safe.')
-        return redirect(url_for('main.edit_profile.html'))
+        return redirect(url_for('main.user', id=current_user.id))
     return render_template('auth/change_password.html', form=form)
 
 @auth.route('/confirm/<token>')

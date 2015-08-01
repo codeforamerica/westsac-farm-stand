@@ -48,6 +48,10 @@ def user(id):
         abort(404)
     return render_template('user.html', user=user)
 
+@main.route('/profile/<int:id>')
+def profile(id):
+    farmer = User.query.filter_by(id = id).first()
+    return render_template('profile.html', farmer=farmer)
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required

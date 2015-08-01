@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Farm Stand - Edit Profile{% endblock %}
+{% block title %}Farm Stand - Profile{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -18,9 +18,12 @@
   <div class="container">
     <div class="box">
       <div class="edit-profile-box">
-          <h1>edit profile</h1>
-          <a href="{{ url_for('auth.changepassword', id=current_user.id) }}">change password</a>
-          {{ wtf.quick_form(form) }}
+          <h1>Fulano Profile</h1>
+          <ul>
+            <li>{{ farmer.name }}</li>
+            <li>From <a href="http://maps.google.com/?q={{ farmer.location }}"> {{ farmer.location }}</a></li>
+            <li>{{ farmer.about_me }}</li>
+          </ul>
       </div>
     </div>
   </div>
