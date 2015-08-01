@@ -35,8 +35,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         "postgresql://admin@localhost/farm_stand"
-    print SQLALCHEMY_DATABASE_URI
-
+    
     @classmethod
     def init_app(cls, app):
         Config.init_app(app)
