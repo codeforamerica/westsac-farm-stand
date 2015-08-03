@@ -41,7 +41,7 @@
       <table>
         <tbody>
           {% for product in products %}
-            {% if product.available == True %}
+            {% if product.status == "1" %}
               <tr>
                 <td>{{product.name}}</td>
                 <td class="price">{{product.price}}</td>
@@ -56,10 +56,10 @@
       <table class="coming-soon">
         <tbody>
           {% for product in products %}
-            {% if product.available == False %}
+            {% if product.status == "2" %}
               <tr>
                 <td>{{product.name}}</td>
-                <td class="price">${{product.price}}</td>
+                <td class="price">{{product.price}}</td>
               </tr>
             {% endif%}
           {% endfor %}

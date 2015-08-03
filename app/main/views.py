@@ -35,7 +35,7 @@ def foodsms():
         if keyword == 'food':
             message = foodstring
         else:
-            message = "This is West Sacramento Farm Stand, if you want to know which food is available text 'FOOD'."
+            message = "This is West Sacramento Farm Stand, if you want to know which food is status text 'FOOD'."
 
     resp = twilio.twiml.Response()
     resp.message(message)
@@ -104,26 +104,26 @@ def crop_list(id):
 
 
 
-@main.route('/crop-list/available/<int:id>')
-@login_required
-def update_available(id):
-    print "clickaste para off"
-    product = Product.query.get_or_404(id)
-    product.available = True
-    db.session.add(product)
-    db.session.commit()
-    return redirect(url_for('.crop_list', id=product.farmer_id))
-
-
-@main.route('/crop-list/unavailable/<int:id>')
-@login_required
-def update_unavailable(id):
-    print "clickaste para on"
-    product = Product.query.get_or_404(id)
-    product.available = False
-    db.session.add(product)
-    db.session.commit()
-    return redirect(url_for('.crop_list', id=product.farmer_id))
+# @main.route('/crop-list/status/<int:id>')
+# @login_required
+# def update_available(id):
+#     print "clickaste para off"
+#     product = Product.query.get_or_404(id)
+#     product.status = True
+#     db.session.add(product)
+#     db.session.commit()
+#     return redirect(url_for('.crop_list', id=product.farmer_id))
+#
+#
+# @main.route('/crop-list/unavailable/<int:id>')
+# @login_required
+# def update_unavailable(id):
+#     print "clickaste para on"
+#     product = Product.query.get_or_404(id)
+#     product.status = False
+#     db.session.add(product)
+#     db.session.commit()
+#     return redirect(url_for('.crop_list', id=product.farmer_id))
 
 @main.route('/crop-list/delete/<int:id>')
 @login_required
@@ -142,7 +142,7 @@ def add_product(id):
     if current_user.can(Permission.ADD_PRODUCT) and \
             form.validate_on_submit():
         product = Product(name=form.name.data,
-                    available=form.available.data,
+                    status=form.status.data,
                     price=form.price.data,
                     starts=form.starts.data,
                     ends=form.ends.data,
@@ -164,7 +164,7 @@ def edit_product(id):
     form = ProductForm()
     if form.validate_on_submit():
         product.name = form.name.data
-        product.available = form.available.data
+        product.status = form.status.data
         product.price = form.price.data
         product.starts = form.starts.data
         product.ends = form.ends.data
@@ -173,7 +173,7 @@ def edit_product(id):
         flash('The product has been updated.')
         return redirect(url_for('.crop_list', id=current_user.id))
     form.name.data = product.name
-    form.available.data = product.available
+    form.status.data = product.status
     form.price.data = product.price
     form.starts.data = product.starts
     form.ends.data = product.ends

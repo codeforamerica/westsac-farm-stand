@@ -1,6 +1,6 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.wtf import Form
-from wtforms import StringField, BooleanField, TextAreaField, SelectField, SubmitField
+from wtforms import StringField, BooleanField, TextAreaField, SelectField, SubmitField, RadioField
 from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from ..models import Interestedpeople, Role, User, Product
@@ -40,7 +40,7 @@ class EditProfileAdminForm(Form):
 
 class ProductForm(Form):
     name = StringField('Product name', validators=[Length(0, 64)])
-    available = BooleanField('Available')
+    status = RadioField('Status:', choices=[('1','available'),('2','unavailable'),('3','hidden')])
     price = StringField('Price')
     starts = StringField('From')
     ends = StringField('To')

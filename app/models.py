@@ -56,7 +56,7 @@ class Product(db.Model):
     __tablename__ = 'product'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    available = db.Column(db.Boolean)
+    status = db.Column(db.String(32))
     price = db.Column(db.String(12))
     starts = db.Column(db.String(64))
     ends = db.Column(db.String(64))
