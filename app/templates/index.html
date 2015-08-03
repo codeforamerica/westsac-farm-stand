@@ -41,12 +41,15 @@
       <table>
         <tbody>
           {% for product in products %}
-            {% if product.status == "1" %}
+
               <tr>
                 <td>{{product.name}}</td>
                 <td class="price">{{product.price}}</td>
+                <td>
+                  {{ product.status}}
+                </td>
               </tr>
-            {% endif%}
+
           {% endfor %}
         </tbody>
       </table>
