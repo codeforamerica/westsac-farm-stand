@@ -41,7 +41,7 @@
       <table>
         <tbody>
           {% for product in products %}
-            {% if product.status == 1 %}
+            {% if int(product.status) == 1 %}
               <tr>
                 <td>{{product.name}}</td>
                 <td class="price">{{product.price}}</td>
