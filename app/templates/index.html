@@ -41,15 +41,12 @@
       <table>
         <tbody>
           {% for product in products %}
-
+            {% if product.status == "1" %}
               <tr>
                 <td>{{product.name}}</td>
                 <td class="price">{{product.price}}</td>
-                <td>
-                  {{ product.status}}
-                </td>
               </tr>
-
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
@@ -78,7 +75,7 @@
       {% endfor%}
   </div> -->
   <div class="col-md-4 participating-farmers">
-    <h3>Participating farmers</h3>
+    <h3>Participating Farms</h3>
       <ul>
         {% for farmer in farmers %}
           <li><a href="{{ url_for('main.profile', id=farmer.id) }}">{{ farmer.name }}</a></li>
