@@ -131,7 +131,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.farm_name
 
 
 class AnonymousUser(AnonymousUserMixin):

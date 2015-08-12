@@ -92,7 +92,7 @@ def edit_profile_admin(id):
     form.confirmed.data = user.confirmed
     form.role.data = user.role_id
     form.name.data = user.name
-    user.url = form.url.data
+    form.url.data = user.url
     form.farm_name.data = user.farm_name
     form.location.data = user.location
     form.about_me.data = user.about_me
@@ -104,28 +104,6 @@ def crop_list(id):
     products = Product.query.filter_by(farmer_id = id).all()
     return render_template('crop_list.html', products=products)
 
-
-
-# @main.route('/crop-list/status/<int:id>')
-# @login_required
-# def update_available(id):
-#     print "clickaste para off"
-#     product = Product.query.get_or_404(id)
-#     product.status = True
-#     db.session.add(product)
-#     db.session.commit()
-#     return redirect(url_for('.crop_list', id=product.farmer_id))
-#
-#
-# @main.route('/crop-list/unavailable/<int:id>')
-# @login_required
-# def update_unavailable(id):
-#     print "clickaste para on"
-#     product = Product.query.get_or_404(id)
-#     product.status = False
-#     db.session.add(product)
-#     db.session.commit()
-#     return redirect(url_for('.crop_list', id=product.farmer_id))
 
 @main.route('/crop-list/delete/<int:id>')
 @login_required

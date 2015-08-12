@@ -38,6 +38,19 @@
             {% endfor %}
           </div>
 
+          <div class="coming-soon">
+            <h3>Hidden</h3><hr>
+            {% for product in products %}
+              {% if product.status == "3" %}
+                <li>
+                  <span class="title">{{product.name}}</span>
+                  <span class="price">{{ product.price }}</span>
+                  <a href="{{ url_for('.edit_product', id=product.id) }}" class="pull-right" style="color: cornflowerblue;"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                </li>
+              {% endif%}
+            {% endfor %}
+          </div>
+
         </ul>
       {% endif %}
   </div>
