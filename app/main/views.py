@@ -69,10 +69,10 @@ def edit_profile():
     return render_template('edit_profile.html', form=form)
 
 
-@main.route('/edit-profile/<int:id>', methods=['GET', 'POST'])
+@main.route('/edit-user/<int:id>', methods=['GET', 'POST'])
 @login_required
 @admin_required
-def edit_profile_admin(id):
+def edit_user(id):
     user = User.query.get_or_404(id)
     form = EditProfileAdminForm(user=user)
     if form.validate_on_submit():
@@ -96,7 +96,7 @@ def edit_profile_admin(id):
     form.farm_name.data = user.farm_name
     form.location.data = user.location
     form.about_me.data = user.about_me
-    return render_template('edit_profile.html', form=form, user=user)
+    return render_template('edit_user.html', form=form, user=user)
 
 @main.route('/crop-list/<int:id>', methods=['GET', 'POST'])
 @login_required

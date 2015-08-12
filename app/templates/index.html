@@ -78,7 +78,9 @@
     <h3>Participating Farms</h3>
       <ul>
         {% for farmer in farmers %}
-          <li><a href="{{ url_for('main.profile', id=farmer.id) }}">{{ farmer.name }}</a></li>
+          {% if farmer.farm_name %}
+            <li><a href="{{ url_for('main.profile', id=farmer.id) }}">{{ farmer.farm_name }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
   </div>
