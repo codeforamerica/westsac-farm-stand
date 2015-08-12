@@ -15,7 +15,7 @@
           <div class="available-now">
             <h3>Available Now</h3><hr>
             {% for product in products %}
-              {% if product.status == "1" %}
+              {% if product.status == 1 %}
                 <li>
                   <span class="title">{{product.name}}</span>
                   <span class="price">{{ product.price }}</span>
@@ -28,7 +28,7 @@
           <div class="coming-soon">
             <h3>Coming Soon</h3><hr>
             {% for product in products %}
-              {% if product.status == "2" %}
+              {% if product.status == 2 %}
                 <li>
                   <span class="title">{{product.name}}</span>
                   <span class="price">{{ product.price }}</span>
@@ -41,7 +41,7 @@
           <div class="coming-soon">
             <h3>Hidden</h3><hr>
             {% for product in products %}
-              {% if product.status == "3" %}
+              {% if product.status == 3 %}
                 <li>
                   <span class="title">{{product.name}}</span>
                   <span class="price">{{ product.price }}</span>
