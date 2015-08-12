@@ -1,10 +1,71 @@
 /*base styles*/
 
-body {
-  font-family: 'Montserrat', sans-serif;
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Open Sans', sans-serif;}
+
+p {font-size: 16px;}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 75px;}
+
+h4 {
+  font-size: 13px;}
+
+.border-bottom {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;}
+
+.form-control {
+  height: 40px;
+  font-size: 16px;
+  color: black;
+  background-color: #f6fafd;
+  border: 1px solid #e3e9ee;
+  box-shadow: none;}
+
+label {
+  font-weight: normal;
   font-size: 16px;}
 
-h1 {
+.input-buttons {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 30px;}
+
+.btn-primary {
+  background-color: blue;
+border-color: blue;
+  padding: 10px 20px;
+  font-size: 16px;}
+
+.btn {}
+
+h5 {
+  font-weight: bold;
+  font-size: 16px;}
+
+.settings-group {
+  padding-top: 10px;
+  border-top: 1px solid #eee;}
+
+.settings-group:first-of-type {
+  border-top: 0px;
+padding: 0px;}
+
+.unfilled {
+  color: #aaa;
+  font-style: italic;
+  font-size: 13px;}
+
+
+/*h1 {
   font-size: 36px;
   margin-bottom: 0px;
   font-weight: bold;
@@ -31,15 +92,12 @@ tr {
   border-bottom: 1px solid #eee;}
 
 td {
-  padding: 20px 0px;}
+  padding: 20px 0px;}*/
 
-strong {
-  font-size: 1.2em;
-}
 /*end of base styles*/
 
 /*header styles*/
-.navbar {
+/*.navbar {
   background-color: darkgray;
   border-bottom: white solid 1px;
   color: white;
@@ -59,12 +117,12 @@ strong {
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
   border-color: silver;
-}
+}*/
 
 /*end of header styles*/
 
 /*login styles*/
-.login .box, .register .box, .edit-profile .box, .add-product .box {
+/*.login .box, .register .box, .edit-profile .box, .add-product .box {
   margin-top: 20px;
 }
 .login-box, .new-register, .register-box, .edit-profile-box, .add-product-box{
@@ -86,13 +144,13 @@ strong {
 
 .edit-profile .btn, .add-product .btn {
   background-color: #0000ff;
-}
+}*/
 
 /*end login styles*/
 
 /*content styles*/
 
-.disclaimer {
+/*.disclaimer {
   font-size: 13px;
 }
 
@@ -151,7 +209,7 @@ strong {
 }
 .list-users li {
   list-style-type: none;
-}
+}*/
 
 .crop-list ul{
   padding: 0px;
@@ -203,7 +261,7 @@ strong {
 
 .add-product-box div.delete-box a {
   color: tomato;
-}
+}*/
 
 /*end of content styles*/
 
@@ -212,7 +270,7 @@ strong {
 
 /*end of footer styles*/
 
-@media only screen
+/*@media only screen
 and (min-device-width : 320px)
 and (max-device-width : 568px) {
   .login-box, .new-register, .register-box, .edit-profile-box, .add-product-box {
@@ -273,4 +331,4 @@ and (max-device-width : 568px) {
     margin-top: -10px;
   }
 
-}
+}*/

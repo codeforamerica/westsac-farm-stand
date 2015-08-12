@@ -71,6 +71,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     phone = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
+    url = db.Column(db.String(128), unique=True, index=True)
+    farm_name = db.Column(db.String(64), index=True)
     name = db.Column(db.String(64), index=True)
     about_me = db.Column(db.Text())
     location = db.Column(db.String(64))

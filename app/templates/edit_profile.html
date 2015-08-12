@@ -20,12 +20,12 @@
       <div class="edit-profile-box">
           <h1>edit profile</h1>
           <a href="{{ url_for('auth.changepassword', id=current_user.id) }}">change password</a>
+
           <form class="form" method="post" role="form">
             {{ form.hidden_tag() }}
 
-            {{ wtf.form_field(form.name, placeholder=current_user.name) }}
-            {{ wtf.form_field(form.location, placeholde=current_user.location) }}
-            {{ wtf.form_field(form.about_me, placeholde=current_user.about_me) }}
+            {{ wtf.form_field(form.farm_name, placeholder=current_user.farm_name) }}
+            {{ wtf.form_field(form.url, placeholder=current_user.url) }}
 
             {{ wtf.form_field(form.submit)}}
           </form>
