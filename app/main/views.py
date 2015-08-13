@@ -28,8 +28,8 @@ def index():
 
 @main.route('/foodsms', methods=['POST'])
 def foodsms():
-    products = Product.query.all()
-    foodstring = '-'.join([x.name + ": "+ x.price + "\n" for x in products])
+    products = Product.query.limit(10)
+    foodstring = "Fresh, affordable produce Tuesday at your neighborhood farm stand. This week: \n" + '-'.join([x.name + ": "+ x.price + "\n" for x in products]) + "\n for the complete crop list: http://www.westsacramentourbanfarm.com"
     if request.method == 'POST':
         keyword = request.values.get('Body', None).lower()
         if keyword == 'food':
