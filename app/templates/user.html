@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "baseAdmin.html" %}
 
 {% import "bootstrap/wtf.html" as wtf %}
@@ -34,3 +35,8 @@
   {% endif %}
 </div>
 {% endblock %}
+=======
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}{{ wtf.quick_form(form) }}{% block title %}Farm Stand{% endblock %}{% block content %}<div class="container">  {% for message in get_flashed_messages() %}  <div class="alert alert-warning">      <button type="button" class="close" data-dismiss="alert">&times;</button>      {{ message }}  </div>  {% endfor %}</div><div class="container">  <div class="page-header">    <h1>Your Profile</h1><span>Information about you and your farm.</span>    <hr>    <p><strong>E-mail Address</strong>  {{ user.email }}</p>    <hr>    <p><strong>Farm Name</strong>&nbsp; &nbsp; &nbsp;  {{ user.farm_name }}</p>    <hr>    <p><strong>Website Link</strong>&nbsp; &nbsp; &nbsp;  <a href="{{ user.url }}">{{ user.url }}</a></p>  </div>  {% if user == current_user %}    <a class="btn btn-default" href="{{url_for('.edit_profile')}}">Edit Profile</a>  {% endif %}</div>
+{% endblock %}
+>>>>>>> 9a6150242a2f34ce079731c3f8f666b98e8d5a8e

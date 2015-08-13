@@ -5,6 +5,3 @@ local_settings.py
 migrations
 .env
 .DS_Store
-config.py
-requirements.txt
-data.sqlite

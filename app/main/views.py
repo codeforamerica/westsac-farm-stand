@@ -28,8 +28,8 @@ def index():
 
 @main.route('/foodsms', methods=['POST'])
 def foodsms():
-    products = Product.query.all()
-    foodstring = ', '.join([x.name for x in products])
+    products = Product.query.limit(10)
+    foodstring = "Fresh, affordable produce Tuesday at your neighborhood farm stand. This week: \n \n- " + '- '.join([x.name + ": "+ x.price + "\n" for x in products]) + "\n And much more! Complete crop list: http://www.westsacramentourbanfarm.com"
     if request.method == 'POST':
         keyword = request.values.get('Body', None).lower()
         if keyword == 'food':
@@ -97,6 +97,15 @@ def edit_user(id):
     form.location.data = user.location
     form.about_me.data = user.about_me
     return render_template('edit_user.html', form=form, user=user)
+
+@main.route('/delete-user/<int:id>')
+@login_required
+def delete_user(id):
+    print "clickaste para borrar"
+    user = User.query.get_or_404(id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('.list_users', id=user.id))
 
 @main.route('/crop-list/<int:id>', methods=['GET', 'POST'])
 @login_required
