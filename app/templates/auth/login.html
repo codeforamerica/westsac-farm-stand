@@ -1,41 +1,32 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-
 {% block title %}Farm Stand - Login{% endblock %}
-
 {% block head %}
 {{ super() }}
-  <style media="screen">
-    body {
-      background-color: #f5f5f5;
-    }
-  </style>
 {% endblock %}
 
 {% block content %}
 
-{% for message in get_flashed_messages() %}
-  <div class="alert alert-warning">
+<div class="container page-body">
+  <h1>Login</h1>
+  <hr>
+  
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       {{ message }}
   </div>
 {% endfor %}
-
-<div class="login">
-  <div class="container">
-    <div class="box">
-      <div class="login-box">
-          <h1>Login</h1>
-          {{ wtf.quick_form(form) }}
-      </div>
-      <div class="new-register">
-        New user?
-        <a href="{{ url_for('auth.register') }}">
-          Click here to register
-        </a>
-      </div>
-    </div>
+  
+  {{ wtf.quick_form(form) }}
+  <br/>
+  <div class="new-register">
+  New user? <a href="{{ url_for('auth.register') }}">Sign up</a>.
   </div>
 </div>
+
+
+
+
 
 {% endblock %}
