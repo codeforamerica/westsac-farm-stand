@@ -25,12 +25,11 @@
     <p><strong>Farm Name</strong>&nbsp; &nbsp; &nbsp;  {{ user.farm_name }}</p>
     <hr>
     <p><strong>Website Link</strong>&nbsp; &nbsp; &nbsp;  <a href="{{ user.url }}">{{ user.url }}</a></p>
-
-
   </div>
 
   {% if user == current_user %}
     <a class="btn btn-primary" href="{{url_for('.edit_profile')}}">Edit Profile</a>
+    <a class="btn btn-default" href="{{ url_for('auth.changepassword', id=current_user.id) }}">Change Password</a>
   {% endif %}
 
 </div>
