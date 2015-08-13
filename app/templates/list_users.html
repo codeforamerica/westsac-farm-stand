@@ -24,6 +24,7 @@
           <td>{{user.name}}</td>
           <td>{{user.role.name}}</td>
           <td><a href="{{ url_for('.edit_user', id=user.id) }}">edit</a></td>
+          <td><a href="{{ url_for('.delete_user', id=user.id) }}" class="delete"> delete </a></td>
         </tr>
         {% endfor %}
       </table>

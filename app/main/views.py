@@ -98,6 +98,15 @@ def edit_user(id):
     form.about_me.data = user.about_me
     return render_template('edit_user.html', form=form, user=user)
 
+@main.route('/delete-user/<int:id>')
+@login_required
+def delete_user(id):
+    print "clickaste para borrar"
+    user = User.query.get_or_404(id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('.list_users', id=user.id))
+
 @main.route('/crop-list/<int:id>', methods=['GET', 'POST'])
 @login_required
 def crop_list(id):
