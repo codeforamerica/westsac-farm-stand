@@ -15,25 +15,22 @@
   {% endfor %}
 </div>
 
-<div class="container">
-  <div class="page-header">
-    <h1>Your Profile</h1>
-    <span>Information about you and your farm.</span>
-    <hr>
-    <p><strong>E-mail Address</strong>&nbsp;&nbsp;&nbsp;{{ user.email }}</p>
-    <hr>
-    <p><strong>Password</strong>&nbsp;&nbsp;&nbsp;********** &nbsp;{% if user == current_user %}
-    <a class="btn btn-default" href="{{ url_for('auth.changepassword', id=current_user.id) }}">Change Password</a>
+<div class="container page-body">
+  <h1>Your Profile</h1>
+  <span>Information about you and your farm.</span>
+  <hr>
+  <p><strong>E-mail Address</strong>&nbsp;&nbsp;&nbsp;{{ user.email }}</p>
+  <hr>
+  <p><strong>Password</strong>&nbsp;&nbsp;&nbsp;********** &nbsp;{% if user == current_user %}
+  <a class="btn btn-default" href="{{ url_for('auth.changepassword', id=current_user.id) }}">Change Password</a>
   {% endif %}</p>
-    <hr>
-    <p><strong>Farm Name</strong>&nbsp;&nbsp;&nbsp;{{ user.farm_name }}</p>
-    <hr>
-    <p><strong>Website Link</strong>&nbsp;&nbsp;&nbsp;<a href="{{ user.url }}">{{ user.url }}</a></p>
-  </div>
-
+  <hr>
+  <p><strong>Farm Name</strong>&nbsp;&nbsp;&nbsp;{{ user.farm_name }}</p>
+  <hr>
+  <p><strong>Website Link</strong>&nbsp;&nbsp;&nbsp;<a href="{{ user.url }}">{{ user.url }}</a></p>
+  <hr>
   {% if user == current_user %}
     <a class="btn btn-primary" href="{{url_for('.edit_profile')}}">Edit Profile</a>
   {% endif %}
-
 </div>
 {% endblock %}

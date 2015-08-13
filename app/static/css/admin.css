@@ -64,7 +64,9 @@ padding: 0px;}
   font-style: italic;
   font-size: 13px;}
 
-
+.page-body {
+    padding-bottom: 20px;
+    margin-top: 30px;}
 /*h1 {
   font-size: 36px;
   margin-bottom: 0px;
@@ -332,3 +334,4 @@ and (max-device-width : 568px) {
   }
 
 }*/
+

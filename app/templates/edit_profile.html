@@ -9,8 +9,7 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="page-header">
+<div class="container page-body">
     <h1>Edit Your Profile</h1>
     <hr>
     <form class="form" method="post" role="form">
@@ -20,9 +19,7 @@
       {{ wtf.form_field(form.url, placeholder=current_user.url) }}
 
     </form>
-  </div>
-  
+  <hr>
   {{ wtf.form_field(form.submit)}}
-
 </div>
 {% endblock %}
