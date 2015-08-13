@@ -31,9 +31,9 @@
   {% for product in products %}
     {% if product.status | int == 2 %}
       <li>
-        <span class="title">{{product.name}}</span>
+        <p><span class="title">{{product.name}}</span>
         <span class="price">{{ product.price }}</span>
-        <a href="{{ url_for('.edit_product', id=product.id) }}" class="pull-right edit-crop-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+        <a href="{{ url_for('.edit_product', id=product.id) }}" class="pull-right edit-crop-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></p>
       </li>
     {% endif%}
   {% endfor %}
@@ -45,9 +45,9 @@
     {% for product in products %}
       {% if product.status | int == 3 %}
         <li>
-          <span class="title">{{product.name}}</span>
+          <p><span class="title">{{product.name}}</span>
           <span class="price">{{ product.price }}</span>
-          <a href="{{ url_for('.edit_product', id=product.id) }}" class="pull-right edit-crop-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+          <a href="{{ url_for('.edit_product', id=product.id) }}" class="pull-right edit-crop-button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></p>
         </li>
       {% endif%}
     {% endfor %}

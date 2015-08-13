@@ -98,9 +98,6 @@ h5 {
 .price {
   text-align: right;}
 
-.coming-soon .price, .coming-soon .title, .coming-soon .season{
-  opacity: .5;}
-
 .add-product-box div.delete-box {
   height: 50px;
   text-align: center;
