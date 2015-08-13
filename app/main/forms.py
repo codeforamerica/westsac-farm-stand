@@ -12,9 +12,9 @@ class NamePhoneForm(Form):
     submit = SubmitField('Submit')
 
 class EditProfileForm(Form):
-    farm_name = StringField('Name of your farm', validators=[Length(0,64)])
-    url = StringField('Your website', validators=[Length(0,64)])
-    submit = SubmitField('Submit')
+    farm_name = StringField('Farm Name', validators=[Length(0,64)])
+    url = StringField('Website Link', validators=[Length(0,64)])
+    submit = SubmitField('Save')
 
 class EditProfileAdminForm(Form):
     email = StringField('Email', validators=[Required(), Length(1, 64),
@@ -22,11 +22,11 @@ class EditProfileAdminForm(Form):
     confirmed = BooleanField('Confirmed')
     role = SelectField('Role', coerce=int)
     name = StringField('Real name', validators=[Length(0, 64)])
-    url = StringField('Your website', validators=[Length(0,64)])
-    farm_name = StringField('Name of your farm', validators=[Length(0,64)])
+    url = StringField('Website Link', validators=[Length(0,64)])
+    farm_name = StringField('Farm Name', validators=[Length(0,64)])
     location = StringField('Location', validators=[Length(0, 64)])
     about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Save')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -41,7 +41,7 @@ class EditProfileAdminForm(Form):
 
 class ProductForm(Form):
     name = StringField('Crop Name', validators=[Length(0, 64)])
-    status = SelectField('Status', choices=[('1','Available'),('2','Unavailable'),('3','Hidden')])
+    status = SelectField('Status', choices=[('1','Available'),('2','Coming Soon'),('3','Hidden')])
     price = StringField('Price')
     starts = StringField('Available From')
     ends = StringField('To')

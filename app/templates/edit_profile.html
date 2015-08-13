@@ -15,8 +15,8 @@
     <form class="form" method="post" role="form">
       {{ form.hidden_tag() }}
 
-      {{ wtf.form_field(form.farm_name, placeholder=current_user.farm_name) }}
-      {{ wtf.form_field(form.url, placeholder=current_user.url) }}
+      {{ wtf.form_field(form.farm_name, placeholder="") }}
+      {{ wtf.form_field(form.url, placeholder="") }}
 
     </form>
   <hr>

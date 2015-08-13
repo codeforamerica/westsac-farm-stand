@@ -11,8 +11,8 @@ p {font-size: 16px;}
 
 h3 {
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 75px;}
+  font-size: 15px;
+  text-transform: uppercase;}
 
 h4 {
   font-size: 13px;}
@@ -219,7 +219,6 @@ td {
 
 .crop-list li{
   list-style-type: none;
-  height: 55px;
   border-bottom: 1px solid #f6f6f6;
   margin-bottom: 15px;
 }
@@ -230,7 +229,7 @@ td {
   width: 40px;
   height: 40px;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 9px;
   padding-left: 2px;
   border-radius: 50px;
   font-size: 0.8em;
@@ -263,7 +262,15 @@ td {
 
 .add-product-box div.delete-box a {
   color: tomato;
-}*/
+}
+
+.edit-crop-button {
+color: cornflowerblue;
+font-size: 20px;}
+
+.add-crop-button {
+font-size: 25px;}
+*/
 
 /*end of content styles*/
 
