@@ -41,7 +41,7 @@ class EditProfileAdminForm(Form):
 
 class ProductForm(Form):
     name = StringField('Crop Name', validators=[Length(0, 64)])
-    status = RadioField('Status:', choices=[('1','Available'),('2','Unavailable'),('3','Hidden')])
+    status = SelectField('Status', choices=[('1','Available'),('2','Unavailable'),('3','Hidden')])
     price = StringField('Price')
     starts = StringField('Available From')
     ends = StringField('To')

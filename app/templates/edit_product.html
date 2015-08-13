@@ -1,41 +1,29 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-
 {% block title %}Farm Stand - Edit Profile{% endblock %}
-
 {% block head %}
 {{ super() }}
-  <style media="screen">
-    body {
-      background-color: #f5f5f5;
-    }
-  </style>
 {% endblock %}
 
 {% block content %}
 
-<div class="add-product edit-product">
-  <div class="container">
-    <div class="box">
-      <div class="add-product-box">
-        {% if current_user %}
-          <h3>edit product</h3>
-          <form class="form" method="post" role="form">
-            {{ form.hidden_tag() }}
+<div class="container page-body">
+  {% if current_user %}
+    <h1>Edit Crop</h1>
+    <hr>
+    <form class="form" method="post" role="form">
+      {{ form.hidden_tag() }}
 
-            {{ wtf.form_field(form.name, placeholder=product.name) }}
-            {{ wtf.form_field(form.status, placeholde=product.status) }}
-            {{ wtf.form_field(form.price, placeholder=product.price )}}
-            {{ wtf.form_field(form.starts, placeholder=product.starts )}}
-            {{ wtf.form_field(form.ends, placeholder=product.ends ) }}
-            {{ wtf.form_field(form.submit)}}
-
-          </form>
-          <div class="delete-box"><a href="{{ url_for('.delete_product', id=product.id) }}" class="delete"> delete </a></div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+      {{ wtf.form_field(form.name, placeholder=product.name) }}
+      {{ wtf.form_field(form.status, placeholde=product.status) }}
+      {{ wtf.form_field(form.price, placeholder=product.price )}}
+      {{ wtf.form_field(form.starts, placeholder=product.starts )}}
+      {{ wtf.form_field(form.ends, placeholder=product.ends ) }}
+      <hr>
+      {{ wtf.form_field(form.submit)}}
+      <div class="delete-box"><a href="{{ url_for('.delete_product', id=product.id) }}" class="delete">Delete</a></div>  
+    </form>
+  {% endif %}
 </div>
 
 {% endblock %}

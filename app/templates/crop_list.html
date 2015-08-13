@@ -5,11 +5,10 @@
 
 {% block content %}
 
-<div class="crop-list">
-  <div class="container">
+  <div class="container page-body crop-list">
       {% if current_user %}
         <div class="header">
-          <h2>Crop List <a href="{{ url_for('.add_product', id=current_user.id) }}"><span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span></a></h2>
+          <h1>Crop List <a href="{{ url_for('.add_product', id=current_user.id) }}"><span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span></a></h1>
         </div><hr>
         <ul class="products">
           <div class="available-now">
@@ -54,6 +53,5 @@
         </ul>
       {% endif %}
   </div>
-</div>
 
 {% endblock %}
