@@ -20,7 +20,7 @@
       {{ wtf.form_field(form.starts, placeholder=product.starts )}}
       {{ wtf.form_field(form.ends, placeholder=product.ends ) }}
       <hr>
-      {{ wtf.form_field(form.submit)}}
+      {{ form.submit(class_='btn btn-primary')}}
       <div class="delete-box"><a href="{{ url_for('.delete_product', id=product.id) }}" class="delete">Delete</a></div>  
     </form>
   {% endif %}
