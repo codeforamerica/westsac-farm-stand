@@ -1,41 +1,33 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Farm Stand - Edit Profile{% endblock %}
+{% block title %}Add a Crop | Farm Stand{% endblock %}
 
 {% block head %}
 {{ super() }}
-  <style media="screen">
-    body {
-      background-color: #f5f5f5;
-    }
-  </style>
 {% endblock %}
 
 {% block content %}
 
-<div class="add-product">
-  <div class="container">
-    <div class="box">
-      <div class="add-product-box">
-        {% if current_user %}
-          <h3>add product</h3>
-          <form class="form" method="post" role="form">
-            {{ form.hidden_tag() }}
+<div class="container page-body">
+  {% if current_user %}
+  <h1>Add a Crop</h1>
+  <span>Which crops are available to purchase right now? Which are coming soon?</span>
+  <hr>
+  <form class="form" method="post" role="form">
+    {{ form.hidden_tag() }}
 
-            {{ wtf.form_field(form.name, placeholder="name") }}
-            {{ wtf.form_field(form.status) }}
-            {{ wtf.form_field(form.price, placeholder="$ 2.00 / lb" )}}
-            {{ wtf.form_field(form.starts, placeholder="from" )}}
-            {{ wtf.form_field(form.ends, placeholder="ends" ) }}
-            {{ wtf.form_field(form.submit)}}
+    {{ wtf.form_field(form.name, placeholder="") }}
+    {{ wtf.form_field(form.status) }}
+    {{ wtf.form_field(form.price, placeholder="$ 2.00 / lb" )}}
+    {{ wtf.form_field(form.starts, placeholder="i.e. January" )}}
+    {{ wtf.form_field(form.ends, placeholder="i.e. March" ) }}
+    <hr>
+    {{ wtf.form_field(form.submit)}}
 
-          </form>
+  </form>
 
-        {% endif %}
-      </div>
-    </div>
-  </div>
+  {% endif %}
 </div>
 
 {% endblock %}

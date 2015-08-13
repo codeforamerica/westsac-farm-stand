@@ -40,7 +40,7 @@ class EditProfileAdminForm(Form):
             raise ValidationError('Email already registered.')
 
 class ProductForm(Form):
-    name = StringField('Product name', validators=[Length(0, 64)])
+    name = StringField('Crop Name', validators=[Length(0, 64)])
     status = RadioField('Status:', choices=[('1','available'),('2','unavailable'),('3','hidden')])
     price = StringField('Price')
     starts = StringField('From')
