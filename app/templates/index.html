@@ -110,7 +110,15 @@
   </div>
 </div>
 
-<div class="log-in">
-  Farmers <a href="{{ url_for('auth.login') }}">log in here</a>.
-</div>
+{% if current_user.is_authenticated() %}
+  <div class="log-in">
+    Farmers <a href="{{ url_for('auth.logout') }}">Log Out</a> here, or go to your <a href="{{ url_for('main.crop_list', id=current_user.id)}}">Crop List</a>.
+  </div>
+{% else %}
+  <div class="log-in">
+    Farmers <a href="{{ url_for('auth.login') }}">Log In</a> here..
+  </div>
+{% endif %}
+
+
 {% endblock %}
