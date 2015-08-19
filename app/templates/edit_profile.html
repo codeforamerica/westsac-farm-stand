@@ -17,9 +17,10 @@
 
       {{ wtf.form_field(form.farm_name, placeholder="") }}
       {{ wtf.form_field(form.url, placeholder="") }}
-
+      <hr>
+      {{ form.submit(class_='btn btn-primary')}}
     </form>
-  <hr>
-  {{ form.submit(class_='btn btn-primary')}}
+
+
 </div>
 {% endblock %}
