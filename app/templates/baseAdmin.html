@@ -37,6 +37,7 @@
                 {% if current_user.is_authenticated() and current_user.role_id == 3 %}
                 <li><a href="{{ url_for('main.crop_list', id=current_user.id)}}">Crop List</a></li>
                 <li><a href="{{ url_for('main.list_users', id=current_user.id)}}">Admin</a></li>
+                <li><a href="{{ url_for('main.subscribers', id=current_user.id)}}">Admin</a></li>
                 {% endif %}
 
             </ul>
