@@ -182,7 +182,7 @@ def subscribers():
     subscribers = Interestedpeople.query.all()
     return render_template('subscribers.html', subscribers=subscribers)
 
-@main.route('/delete-user/<int:id>')
+@main.route('/delete-subscriber/<int:id>')
 @login_required
 @admin_required
 def delete_subscriber(id):
