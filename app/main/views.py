@@ -179,5 +179,5 @@ def list_users():
 @login_required
 @admin_required
 def subscribers():
-    subscribers = Interesetedpeople.query.all()
+    subscribers = Interestedpeople.query.all()
     return render_template('subscribers.html', subscribers=subscribers)
