@@ -174,3 +174,10 @@ def edit_product(id):
 def list_users():
     users = User.query.all()
     return render_template('list_users.html', users=users)
+
+@main.route('/subscribers')
+@login_required
+@admin_required
+def subscribers():
+    subscribers = Interesetedpeople.query.all()
+    return render_template('subscribers.html', subscribers=subscribers)

@@ -1,0 +1,36 @@
+{% extends "baseAdmin.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Farm Stand{% endblock %}
+
+{% block content %}
+
+
+<div class="list-subscribers">
+  <div class="container">
+    <div class="row">
+      <h3>List of subscribers</h3>
+      <table class="table table-condensed">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>phone</th>
+        </tr>
+        {% for subscriber in subscribers %}
+        <tr>
+          <td>{{subscriber.id}}</td>
+          <td>{{subscriber.name}}</td>
+          <td>{{subscriber.phone}}</td>
+          <td><a href="{{ url_for('.delete_subscriber', id=subscriber.id) }}" class="delete"> delete </a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
