@@ -4,7 +4,7 @@ from app import db
 from ..email import send_email
 from . import auth
 from ..models import User
-from .forms import LoginForm, RegistrationForm, ChangePasswordForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm, RequestPasswordForm, ResetPasswordSubmitForm
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,6 +40,7 @@ def register():
     return render_template('auth/register.html', form=form)
 
 @auth.route('/changepassword', methods=['GET', 'POST'])
+@login_required
 def changepassword():
     form = ChangePasswordForm()
     if form.validate_on_submit():
@@ -49,6 +50,31 @@ def changepassword():
         flash('You just changed your password, I hope is safe.')
         return redirect(url_for('main.user', id=current_user.id))
     return render_template('auth/change_password.html', form=form)
+
+@auth.route('/reset-password', methods=['GET', 'POST'])
+def forgot_password():
+    form = RequestPasswordForm()
+    if form.validate_on_submit():
+        email=form.email.data
+        user = User.query.filter_by(email=email).first()
+        if user:
+            token = user.generate_reset_token()
+            send_email(user.email, 'Change your password!', 'auth/email/resetemail', user=user, token=token)
+            flash('We sent you a link where you can change your password.')
+        return redirect(url_for('auth.login'))
+    return render_template('auth/reset.html', form=form)
+
+@auth.route('/newpassword/<token>/<user_id>', methods=['GET', 'POST'])
+def newpassword(token, user_id):
+    user = User.query.filter_by(id=user_id).first()
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        user.password=form.password.data
+        db.session.add(user)
+        db.session.commit()
+        flash('You just changed your password, I hope is safe.')
+        return redirect(url_for('auth.login'))
+    return render_template('auth/reset_password.html', form=form, user=user)
 
 @auth.route('/confirm/<token>')
 @login_required

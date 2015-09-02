@@ -33,3 +33,21 @@ class ChangePasswordForm(Form):
         Required(), EqualTo('password2', message='Passwords must match.')])
     password2 = PasswordField('Confirm password', validators=[Required()])
     submit = SubmitField('Change Password')
+
+class ExistingUser(object):
+    def __init__(self, message="Email doesn't exists"):
+        self.message = message
+
+    def __call__(self, form, field):
+        if not User.query.filter_by(email=field.data).first():
+            raise ValidationError(self.message)
+
+class RequestPasswordForm(Form):
+    email = StringField('Email', validators=[Required(), Email(), ExistingUser(message='Email address is not available')])
+    submit = SubmitField('Reset Password')
+
+class ResetPasswordSubmitForm(Form):
+    password = PasswordField('Password', validators=[
+        Required(), EqualTo('password2', message='Passwords must match.')])
+    password2 = PasswordField('Confirm password', validators=[Required()])
+    submit = SubmitField('Change Password')

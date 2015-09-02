@@ -1,0 +1,15 @@
+Dear {{ user.username }}
+
+Aparently you forgot your password. Don't worry we will send you to our app so you can create a new one,
+just click on the following link:
+
+{{ url_for('auth.newpassword', token=token, user_id=user.id, _external=True) }}
+
+
+Sincerely,
+
+Code for America Fellows
+Team West Sacramento
+
+Note: replies to this email address are not monitored, if you need to contact us
+send us an email to westsacramento@codeforamerica.org
