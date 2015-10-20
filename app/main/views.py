@@ -1,12 +1,31 @@
-from flask import Flask, render_template, session, redirect, url_for, flash, request
+from flask import Flask, render_template, session, redirect, url_for, flash, request, jsonify
 from flask.ext.login import login_required, current_user
+from flask_restful import Resource, Api
 from . import main
 from .forms import NamePhoneForm, EditProfileForm, EditProfileAdminForm, ProductForm
-from ..models import Interestedpeople, Role, User, Permission, Product
+from ..models import Interestedpeople, Role, User, Permission, Product, user_schema, users_schema
 from app import db
 from ..decorators import admin_required, permission_required
+
 import twilio.twiml
 
+@main.route('/api/users/')
+def users():
+    all_users = db.session.query(User).all()
+    result = users_schema.dump(all_users)
+    results = {
+        u['email']:u 
+        for u in result.data
+            }
+
+    return jsonify(results)
+    # OR
+    # return user_schema.jsonify(all_users)
+
+@main.route('/api/users/<id>')
+def user_detail(id):
+    user = db.session.query(User).get(id)
+    return user_schema.jsonify(user)
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -191,3 +210,6 @@ def delete_subscriber(id):
     db.session.delete(subscriber)
     db.session.commit()
     return redirect(url_for('.subscribers', id=subscriber.id))
+
+
+

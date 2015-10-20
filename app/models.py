@@ -3,7 +3,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
-from . import db, login_manager
+from . import db, login_manager, ma
+
+
 
 class Permission:
     FOLLOW = 0x01
@@ -156,7 +158,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User %r>' % self.farm_name
+        return '<User %r>' % self.email
 
 
 class AnonymousUser(AnonymousUserMixin):
@@ -171,3 +173,14 @@ login_manager.anonymous_user = AnonymousUser
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+class UserSchema(ma.ModelSchema):
+    class Meta:
+        # Fields to expose
+        model = User
+        fields = ('id','email', 'phone', 'location')
+
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
