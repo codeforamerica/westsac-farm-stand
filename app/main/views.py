@@ -9,7 +9,7 @@ from ..decorators import admin_required, permission_required
 
 import twilio.twiml
 
-@main.route('/api/users/')
+@main.route('/api/users')
 def users():
     all_users = db.session.query(User).all()
     result = users_schema.dump(all_users)
