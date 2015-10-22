@@ -5,11 +5,12 @@ from . import main
 from .forms import NamePhoneForm, EditProfileForm, EditProfileAdminForm, ProductForm
 from ..models import Interestedpeople, Role, User, Permission, Product, user_schema, users_schema
 from app import db
-from ..decorators import admin_required, permission_required
+from ..decorators import admin_required, permission_required, jsonp
 
 import twilio.twiml
 
-@main.route('/api/users')
+@main.route('/api/users/')
+@jsonp
 def users():
     all_users = db.session.query(User).all()
     result = users_schema.dump(all_users)
