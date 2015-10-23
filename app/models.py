@@ -179,7 +179,7 @@ class UserSchema(ma.ModelSchema):
     class Meta:
         # Fields to expose
         model = User
-        fields = ('id','email', 'phone', 'location')
+        fields = ('id','email', 'phone', 'location', 'phone', 'url', 'farm_name', 'name', 'about_me', 'member_since', 'last_seen', 'products')
 
 
 user_schema = UserSchema()
