@@ -24,6 +24,7 @@ def users():
     # return user_schema.jsonify(all_users)
 
 @main.route('/api/users/<id>')
+@jsonp
 def user_detail(id):
     user = db.session.query(User).get(id)
     return user_schema.jsonify(user)
