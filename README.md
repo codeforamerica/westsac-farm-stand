@@ -29,7 +29,7 @@ Then run the following commands to bootstrap your environment:
     cd westsac-farm-stand/
 
 
-Now, you'll need to install the virtualenv (`see instructions <https://virtualenv.readthedocs.org/en/latest/installation.html/>`_.) tool and then setup the environment:
+Now, you'll need to install the virtualenv [see instructions](https://virtualenv.readthedocs.org/en/latest/installation.html) tool and then setup the environment:
 
 
 ::
