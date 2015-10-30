@@ -27,7 +27,8 @@ def users():
 @jsonp
 def user_detail(id):
     user = db.session.query(User).get(id)
-    return user_schema.jsonify(user)
+    products = Product.query.filter_by(farmer_id = id).all()
+    return user_schema.jsonify(user) 
 
 @main.route('/', methods=['GET', 'POST'])
 def index():

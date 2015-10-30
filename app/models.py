@@ -54,7 +54,7 @@ class Interestedpeople(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
 
-class Product(db.Model):
+class Product(db.Model): 
     __tablename__ = 'product'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
@@ -67,7 +67,7 @@ class Product(db.Model):
     def __repr__(self):
         return '<Product %r>' % (self.name)
 
-class User(UserMixin, db.Model):
+class User(UserMixin, db.Model):  
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
