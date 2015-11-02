@@ -102,6 +102,7 @@ If the user is not in the Crop List page already:
 
 ### Adding a Produce 
 Adddinga a produce is very easy.
+
 1. On the menu bar, the user should navegate to the Crop List page through the clicking of the *Crop List* link.
 2. Click in the plus icon ubicated in the right top corner or the list.
 3. The user should fill all the fields on the form and click Submit. This will take the user to the Crop List again where will be able to verify the produce that has been just submited. 
