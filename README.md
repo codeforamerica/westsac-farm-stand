@@ -110,6 +110,17 @@ Adddinga a produce is very easy.
 note: to edit the information of the produce, the user just have to click on the pencil icon floating right of the name of the produce and this will take them to the same form that we just describe for adding produce.
 
 
+### Suggestions
+
+- 
+
+![alt text](img/login.png)
+
+
+
+
+
+
 
 
 
