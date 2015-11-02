@@ -114,7 +114,6 @@ note: to edit the information of the produce, the user just have to click on the
 
 - 
 
-![alt text](https://github.com/codeforamerica/westsac-farm-stand/blob/master/img/login.png)
 
 
 
