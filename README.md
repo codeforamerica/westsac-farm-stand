@@ -1,4 +1,3 @@
-===============================
 West Sacramento Farm Stand
 ===============================
 
@@ -75,6 +74,76 @@ To apply the migration.
 
 For a full migration command reference, run ``python manage.py db --help``.
 
+### Api
+
+This api was created specifically to feed the [Markets](http://codeforamerica.github.io/westsac-farmers-and-markets/#/home) App. Although is open for other developers to explore and try new ideas with this data.
+
+> Note: this data is not updated
+
+#### get all users
+
+```
+http://westsacramentourbanfarm.com/api/users/
+```
+result: 
+
+```javascript
+{
+    "ajgomez@mail.ru": {
+        "about_me": null, 
+        "email": "ajgomez@mail.ru", 
+        "farm_name": null, 
+        "id": 17, 
+        "last_seen": "2015-07-29T22:50:09.099814+00:00", 
+        "location": null, 
+        "member_since": "2015-07-29T22:50:09.099814+00:00", 
+        "name": "AJ Gomez", 
+        "phone": null, 
+        "products": [], 
+        "url": null
+      }, 
+      "fredricblum@gmail.com": {
+        "about_me": null, 
+        "email": "fredricblum@gmail.com", 
+        "farm_name": null, 
+        "id": 11, 
+        "last_seen": "2015-07-29T22:45:58.786206+00:00", 
+        "location": null, 
+        "member_since": "2015-07-29T22:45:58.786206+00:00", 
+        "name": "Fred Blum", 
+        "phone": null, 
+        "products": [], 
+        "url": null
+      },
+      ...
+}
+
+```
+
+#### get a single user
+```
+http://westsacramentourbanfarm.com/api/users/3
+```
+
+result: 
+
+```javascript
+{
+  "about_me": null, 
+  "email": "ajgomez@mail.ru", 
+  "farm_name": null, 
+  "id": 17, 
+  "last_seen": "2015-07-29T22:50:09.099814+00:00", 
+  "location": null, 
+  "member_since": "2015-07-29T22:50:09.099814+00:00", 
+  "name": "AJ Gomez", 
+  "phone": null, 
+  "products": [], 
+  "url": null
+}
+
+```
+
 How to use it?
 --------------
 
@@ -85,7 +154,8 @@ Farm Stand was design to help urban farmers to create a awareness in their commu
 
 ### Resgistration
 
-Any farmer can register going to the bottom left corner and click on login. 
+Any farmer can register going to the bottom left corner and click on login.
+
 1. At the end of the form there is a link that says *Sing Up* click on it and with just the email, you will be able to sign up.
 2. Once the user registers, they will receive an email with a link to confirm the ownership of that email. The user should click the link and login in the app.
 
@@ -108,12 +178,6 @@ Adddinga a produce is very easy.
 3. The user should fill all the fields on the form and click Submit. This will take the user to the Crop List again where will be able to verify the produce that has been just submited. 
 
 note: to edit the information of the produce, the user just have to click on the pencil icon floating right of the name of the produce and this will take them to the same form that we just describe for adding produce.
-
-
-### Suggestions
-
-- 
-
 
 
 
